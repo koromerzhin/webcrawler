@@ -30,10 +30,6 @@
         >
           <router-link to="/">Essential Links</router-link>
         </q-item-label>
-        <ul>
-          <li><router-link to="/public">Public</router-link></li>
-          <li><router-link to="/private">Private</router-link></li>
-        </ul>
       </q-list>
     </q-drawer>
 
