@@ -76,7 +76,7 @@ module.exports = function (/* ctx */) {
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
-      port: 8080,
+      port: 80,
       open: false // opens browser window automatically
     },
     watchContentBase: true,
@@ -121,8 +121,8 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Repo Check',
-        short_name: 'Repo Check',
+        name: 'Web crawler',
+        short_name: 'Web crawler',
         description: 'Web crawler',
         display: 'standalone',
         orientation: 'portrait',

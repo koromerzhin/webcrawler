@@ -2,7 +2,7 @@
   "name": "front",
   "version": "0.0.1",
   "description": "Web crawler",
-  "productName": "Repo Check",
+  "productName": "Web crawler",
   "author": "koromerzhin <308012+koromerzhin@users.noreply.github.com>",
   "private": true,
   "scripts": {

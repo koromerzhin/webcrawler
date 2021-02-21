@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Repo Check
+          Web crawler
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
