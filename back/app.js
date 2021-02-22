@@ -9,7 +9,7 @@ var indexRouter = require('./routes/index');
 
 var app = express();
 var corsOptions = {
-  origin: 'http://front-webcrawler.traefik.me',
+  origin: 'http://webcrawler.traefik.me',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(cors(corsOptions));
