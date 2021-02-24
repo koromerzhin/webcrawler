@@ -10,16 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: 'Docker swarm init'
-        run: docker swarm init --default-addr-pool 10.20.0.0/16
-      - name: 'Create proxy network'
-        run: make docker create-network
-      - name: 'Build containers'
-        run: make docker deploy
-      - name: 'sleep'
-        run: make sleep 60
-      - name: 'docker ls'
-        run: make docker ls
       - name: Cache npm packages
         id: npm-cache
         uses: actions/cache@v2
@@ -31,5 +21,37 @@ jobs:
       - name: Install npm dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: make node_modules
+      - name: Cache npm packages
+        id: back-cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/back/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node
+      - name: Install npm dependencies
+        if: steps.back-cache.outputs.cache-hit != 'true'
+        run: make back/node_modules
+      - name: Cache npm packages
+        id: front-cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/front/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node
+      - name: Install npm dependencies
+        if: steps.front-cache.outputs.cache-hit != 'true'
+        run: make front/node_modules
+      - name: 'Docker swarm init'
+        run: docker swarm init --default-addr-pool 10.20.0.0/16
+      - name: 'Create proxy network'
+        run: make docker create-network
+      - name: 'Build containers'
+        run: make docker deploy
+      - name: 'sleep'
+        run: make sleep 60
+      - name: 'docker ls'
+        run: make docker ls
       - name: linter readme.md
         run: make linter readme
