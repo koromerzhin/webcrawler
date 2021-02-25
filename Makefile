@@ -28,9 +28,6 @@ back/node_modules: isdocker images back/package.json
 front/node_modules: isdocker images front/package.json
 	$(FRONTRUN) npm install
 
-package-lock.json: package.json
-	@npm install
-
 .PHONY: images
 images: isdocker
 	@make docker image-pull -i
@@ -42,7 +39,7 @@ ifeq ($(isDocker), 0)
 	exit 1
 endif
 
-node_modules: package-lock.json
+node_modules:
 	@npm install
 
 build: ## build
