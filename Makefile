@@ -31,6 +31,10 @@ front/node_modules: isdocker images front/package.json
 package-lock.json: package.json
 	@npm install
 
+.PHONY: images
+images: isdocker
+	@make docker image-pull -i
+
 .PHONY: isdocker
 isdocker: ## Docker is launch
 ifeq ($(isDocker), 0)
