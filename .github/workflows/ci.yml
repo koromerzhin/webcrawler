@@ -21,28 +21,6 @@ jobs:
       - name: Install npm dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: make node_modules
-      - name: Cache back npm packages
-        id: back-cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/back/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node
-      - name: Install back npm dependencies
-        if: steps.back-cache.outputs.cache-hit != 'true'
-        run: make back/node_modules
-      - name: Cache front npm packages
-        id: front-cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/front/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node
-      - name: Install front npm dependencies
-        if: steps.front-cache.outputs.cache-hit != 'true'
-        run: make front/node_modules
       - name: 'Docker swarm init'
         run: docker swarm init --default-addr-pool 10.20.0.0/16
       - name: 'Create proxy network'

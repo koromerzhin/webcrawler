@@ -7,6 +7,22 @@ networks:
     driver: overlay
     attachable: true
 services:
+  frontexec:
+    image: koromerzhin/nodejs:1.1.3-quasar
+    volumes:
+      - ${PWD}/front:/app
+    command: sh -c "npm install"
+    deploy:
+      labels:
+        - "traefik.enable=false"
+  backexec:
+    image: koromerzhin/nodejs:15.1.0-express
+    volumes:
+      - ${PWD}/back:/app
+    command: sh -c "npm install"
+    deploy:
+      labels:
+        - "traefik.enable=false"
   front:
     image: koromerzhin/nodejs:1.1.3-quasar
     volumes:
