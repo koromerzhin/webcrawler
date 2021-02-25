@@ -6,9 +6,11 @@ NETWORK       := proxynetwork
 
 FRONT           := $(STACK)_front
 FRONTFULLNAME   := $(FRONT).1.$$(docker service ps -f 'name=$(FRONT)' $(FRONT) -q --no-trunc | head -n1)
+FRONTRUN       := docker run --rm -v ${PWD}/front:/app koromerzhin/nodejs:1.1.3-quasar
 
 BACK           := $(STACK)_back
 BACKFULLNAME   := $(BACK).1.$$(docker service ps -f 'name=$(BACK)' $(BACK) -q --no-trunc | head -n1)
+BACKRUN       := docker run --rm -v ${PWD}/back:/app koromerzhin/nodejs:15.1.0-express
 
 SUPPORTED_COMMANDS := contributors docker logs git linter update inspect ssh sleep
 SUPPORTS_MAKE_ARGS := $(findstring $(firstword $(MAKECMDGOALS)), $(SUPPORTED_COMMANDS))
@@ -20,19 +22,11 @@ endif
 help:
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
-back/package-lock.json: back/package.json
-	cd back && npm install
+back/node_modules: isdocker images back/package.json
+	$(BACKRUN) npm install
 
-back/node_modules: back/package-lock.json
-	cd back && npm install
-
-
-front/package-lock.json: front/package.json
-	cd front && npm install
-
-front/node_modules: front/package-lock.json
-	cd front && npm install
-
+front/node_modules: isdocker images front/package.json
+	$(FRONTRUN) npm install
 
 package-lock.json: package.json
 	@npm install
