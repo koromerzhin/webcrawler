@@ -18,7 +18,7 @@ services:
       labels:
         - "traefik.enable=false"
   backexec:
-    image: koromerzhin/nodejs:15.1.0-express
+    image: koromerzhin/nodejs:15.1.0
     volumes:
       - ${PWD}/back:/app
     command: sh -c "npm install"
@@ -44,7 +44,7 @@ services:
         - "traefik.http.routers.front-webcrawler-tls.tls.domains[0].sans=webcrawler.{ip:.*}.traefik.me"
         - "traefik.http.services.front-webcrawler.loadbalancer.server.port=80"
   back:
-    image: koromerzhin/nodejs:15.1.0-express
+    image: koromerzhin/nodejs:15.1.0
     volumes:
       - ${PWD}/back:/app
     networks:
