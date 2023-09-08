@@ -1,6 +1,4 @@
-const puppeteer = require('puppeteer-extra');
-const StealthPlugin = require('puppeteer-extra-plugin-stealth');
-puppeteer.use(StealthPlugin());
+const {puppeteer} = require('./../src/puppeteer.js');
 
 function delay(time) {
   return new Promise(function(resolve) { 
