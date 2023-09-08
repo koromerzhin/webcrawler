@@ -4,8 +4,11 @@
   "description": "Web crawler",
   "scripts": {
     "antibot": "node sites/antibot.js",
+    "booktoscrpare": "node sites/booktoscrpare.js",
     "example": "node sites/example.js",
     "github": "node sites/github.js",
+    "youtube": "node sites/youtube.js",
+    "letoullec": "node sites/letoullec.js",
     "lint:markdown": "markdownlint README.md"
   },
   "repository": {
@@ -20,7 +23,7 @@
   },
   "homepage": "https://github.com/koromerzhin/webcrawler#readme",
   "dependencies": {
-    "chromedriver": "^116.0.0",
+    "chromedriver": "116.0.*",
     "korojscommands": "1.2.*",
     "puppeteer": "21.1.*",
     "puppeteer-extra": "3.3.*",
