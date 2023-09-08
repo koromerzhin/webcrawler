@@ -1,0 +1,10 @@
+/node_modules
+.cache
+
+!/screenshot/
+/screenshot/*
+!/screenshot/.gitkeep
+
+!/perso/
+/perso/*
+!/perso/.gitkeep

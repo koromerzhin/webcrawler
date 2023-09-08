@@ -1,0 +1,18 @@
+name: ci
+on: [push]
+jobs:
+  tests:
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ubuntu-22.04]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install npm dependencies
+        run: npm install
+      - name: linter readme.md
+        run: npm run lint:markdown

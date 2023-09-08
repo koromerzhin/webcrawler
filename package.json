@@ -1,0 +1,29 @@
+{
+  "name": "@koromerzhin/webcrawler",
+  "version": "1.0.0",
+  "description": "Web crawler",
+  "scripts": {
+    "antibot": "node sites/antibot.js",
+    "example": "node sites/example.js",
+    "github": "node sites/github.js",
+    "lint:markdown": "markdownlint README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koromerzhin/webcrawler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koromerzhin/webcrawler/issues"
+  },
+  "homepage": "https://github.com/koromerzhin/webcrawler#readme",
+  "dependencies": {
+    "chromedriver": "^116.0.0",
+    "korojscommands": "1.2.*",
+    "puppeteer": "21.1.*",
+    "puppeteer-extra": "3.3.*",
+    "puppeteer-extra-plugin-stealth": "2.11.*"
+  }
+}
