@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/koromerzhin/webcrawler#readme",
   "dependencies": {
-    "chromedriver": "116.0.*",
+    "chromedriver": "117.0.*",
     "korojscommands": "1.2.*",
     "puppeteer": "21.1.*",
     "puppeteer-extra": "3.3.*",
