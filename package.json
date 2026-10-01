@@ -25,7 +25,7 @@
   "dependencies": {
     "chromedriver": "117.0.*",
     "korojscommands": "1.2.*",
-    "puppeteer": "21.3.*",
+    "puppeteer": "21.11.*",
     "puppeteer-extra": "3.3.*",
     "puppeteer-extra-plugin-stealth": "2.11.*"
   }
