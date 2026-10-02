@@ -1,0 +1,6 @@
+[submodule "tools"]
+	path = tools
+	url = git@github.com:koromerzhin/tools.git
+[submodule "taskfiles"]
+	path = taskfiles
+	url = git@github.com:koromerzhin/taskfiles.git
